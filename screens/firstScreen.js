@@ -5,7 +5,7 @@ import { getMonths } from "../calendarFunctions";
 export default function FirstScreen() {
   return (
     <View style={styles.container}>
-      <Text>Self-guided Hacking Journey!</Text>      
+      <Text>Welcome, to the new world of tech.</Text>      
       <StatusBar style="auto" />
     </View>
   );
