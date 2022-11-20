@@ -6,7 +6,7 @@
             "description": "event",
             "location": "location",
             "time": "time",
-            "images": ["https://moderndogmagazine.com/sites/default/files/images/uploads/Dat.jpg"] 
+            "images": ["links"] 
         }
     }, 
     {
@@ -26,7 +26,7 @@
             "description": "tompo & depo's neat hack day",
             "location": "tompo & mompo's house",
             "time": "24/7",
-            "images": ["https://moderndogmagazine.com/sites/default/files/images/uploads/Dat.jpg"] 
+            "images": ["links"] 
         }
     },
     {
@@ -137,10 +137,4 @@
         "location": null,
         "time": null,
         "images": ["https://smallbiztrends.com/ezoimgfmt/media.smallbiztrends.com/2022/01/memorial-day-message-850x476.png?ezimgfmt=rs:357x200/rscb12/ngcb12/notWebP"]
-        }
-        
-        
-        
-        
-
-]   
+        }  
