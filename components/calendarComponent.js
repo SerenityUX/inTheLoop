@@ -48,7 +48,7 @@ export default function CalendarComponent({ setDate }) {
     setDate([
       selectedDayOfWeek,
       selectedDay,
-      [selectedMonth.number + 1, selectedMonth.name],
+      [selectedMonth.number, selectedMonth.name],
       selectedYear,
     ]);
   }, []);
@@ -129,7 +129,7 @@ export default function CalendarComponent({ setDate }) {
                       setDate([
                         dayofweek(viewYear + 1900, viewMonth.number, i),
                         i + 1,
-                        [viewMonth.number + 1, viewMonth.name],
+                        [viewMonth.number, viewMonth.name],
                         viewYear,
                       ]);
                     }}

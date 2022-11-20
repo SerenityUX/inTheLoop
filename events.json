@@ -1,3 +1,22 @@
-{
-    
-}
+{"events": [
+    {
+        "name":"Dorman Hackathon",
+        "date": [2023, 4, 29],
+        "details": {
+            "description": "event",
+            "location": "location",
+            "time": "time",
+            "images": ["links"] 
+        }
+    },
+    {
+        "name":"Dieter & Thomas Colab",
+        "date": [2022, 11, 20],
+        "details": {
+            "description": "tompo & depo's neat hack day",
+            "location": "tompo & mompo's house",
+            "time": "24/7",
+            "images": ["links"] 
+        }
+    }
+]}

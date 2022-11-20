@@ -6,6 +6,7 @@ import {
 } from "react-native";
 import { useState } from "react";
 import CalendarComponent from "../components/calendarComponent"
+import DayDisplayComponent from "../components/dayDisplayComponent"
 
 export default function Calendar({ route, navigation }) {
   const [date, setDate] = useState(["...", 0, 0, 0]);
@@ -17,7 +18,7 @@ export default function Calendar({ route, navigation }) {
           <Text>Welcome Back {route.params.name}</Text>
           <Text>As a {route.params.role}, your id is {route.params.id}</Text>
           <CalendarComponent setDate={setDate}/>
-          <Text>{date[0]}, {date[1]}/{date[2][0]}/{date[3]}</Text>
+          <DayDisplayComponent date={date}/>
           <StatusBar style="auto" />        
     </SafeAreaView>
   );
