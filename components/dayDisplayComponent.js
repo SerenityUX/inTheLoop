@@ -28,7 +28,7 @@ export default function dayDisplay( { date } ) {
                         <Text>{selectedEvent.name}</Text>
                         <Text>{selectedEvent.details.description}</Text>
                         {selectedEvent.details.images.map((imageUri, imageIndex) => 
-                        <View>
+                        <View key={imageIndex}>
                         <Image
                         style={styles.image}
                         source={{uri: imageUri}}
