@@ -1,11 +1,10 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, ScrollView, SafeAreaView, Button } from "react-native";
+import { StyleSheet, Text, View, ScrollView, SafeAreaView } from "react-native";
 
-export default function FirstScreen({ navigation }) {
+export default function FirstScreen() {
 
   return (
     <SafeAreaView>
-      <Button title="to calendar" onPress={() => navigation.dispatch('Calendar')} />
       <Text>Empty box for Deet</Text>
     </SafeAreaView>
   );
@@ -14,6 +13,15 @@ export default function FirstScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#add8e6",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
+  input: {
+    borderWidth: 1,
+    borderColor: '#777',
+    padding: 8,
+    margin: 10,
+    width: 200,
+  }
 });
