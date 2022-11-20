@@ -3,6 +3,7 @@ import {
   StyleSheet,
   Text,
   SafeAreaView,
+  ScrollView,
   Modal,
   Alert,
   TouchableOpacity
@@ -17,6 +18,7 @@ export default function Calendar({ route, navigation }) {
 
   
   return (
+    <ScrollView style={{backgroundColor: "#fff"}}>
     <SafeAreaView style={styles.container}>
         <Modal
           animationType="slide"
@@ -40,6 +42,7 @@ export default function Calendar({ route, navigation }) {
           <DayDisplayComponent date={date}/>
           <StatusBar style="auto" />        
     </SafeAreaView>
+    </ScrollView>
   );
 }
 

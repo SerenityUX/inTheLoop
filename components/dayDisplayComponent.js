@@ -5,7 +5,9 @@ import {
     View,
     Image,
   } from "react-native";
-  import { events } from '../events.json';
+import { events } from '../events.json';
+import Carousel from 'react-native-reanimated-carousel';
+import { Dimensions } from 'react-native';
 
   const styles = StyleSheet.create({
     image: {
@@ -15,6 +17,7 @@ import {
   });
 
 export default function dayDisplay( { date } ) {
+    const windowWidth = Dimensions.get('window').width;
 
     return(
         <View>
@@ -27,12 +30,32 @@ export default function dayDisplay( { date } ) {
                     <View>
                         <Text>{selectedEvent.name}</Text>
                         <Text>{selectedEvent.details.description}</Text>
+                        <Carousel
+                            loop
+                            width={windowWidth}
+                            height={windowWidth}
+                            autoPlay={false}
+                            data={selectedEvent.details.images}
+                            scrollAnimationDuration={1000}
+                            onSnapToItem={(index) => console.log('current index:', index)}
+                            renderItem={({ index }) => (
+                                <View
+                                    style={{
+                                        flex: 1,
+                                        justifyContent: 'center',
+                                    }}
+                                >
+                                    <Image source={{uri: selectedEvent.details.images[index]}} style={{width: windowWidth, height: windowWidth}}/>
+                                </View>
+                            )}
+                        />
+                        
                         {selectedEvent.details.images.map((imageUri, imageIndex) => 
                         <View key={imageIndex}>
                         <Image
                         style={styles.image}
                         source={{uri: imageUri}}
-                        />   
+                        />  
                         </View>
  
                         )}
