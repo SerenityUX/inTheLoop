@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, ScrollView, SafeAreaView } from "react-native";
 import { getMonths } from "../calendarFunctions";
 
-export default function FirstScreen() {
+export default function Calendar({ navigation }) {
   const dayofweek = require('dayofweek');
   const dayAbbreviations = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
   const dayOrder = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
@@ -36,7 +36,7 @@ export default function FirstScreen() {
 
           <View style={{flexDirection: "row", flexWrap: "wrap"}}>
           {dayAbbreviations.map((dayofWeek, i) =>
-              <Text style={{width: "14.2%"}}>{dayofWeek}</Text>
+              <Text style={{width: "14.2%"}} key={i}>{dayofWeek}</Text>
           )}
             {[...Array(dayOrder.indexOf(findStartDay(currentYear, keyID + 1)))].map((x, i) =>
               <Text style={{width: "14.2%"}} key={i}></Text>
