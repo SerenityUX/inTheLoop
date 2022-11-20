@@ -22,7 +22,7 @@ export default function dayDisplay( { date } ) {
 
             {events.map((selectedEvent,i) =>
 
-            <View>
+            <View key={i}>
                 {[selectedEvent.date[1] + "", selectedEvent.date[2] + "", selectedEvent.date[0]] + "" == [date[2][0] + "",date[1] + "",date[3] + ""] ? (
                     <View>
                         <Text>{selectedEvent.name}</Text>
