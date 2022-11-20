@@ -30,6 +30,10 @@ export function getMonths(year) {
             numDays: 30
         },
         {
+            name: "July",
+            numDays: 31
+        },        
+        {
             name: "August",
             numDays: 31
         },
