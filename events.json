@@ -30,6 +30,7 @@
         }
     },
     {
+        
         "name":"Last Day Of 1st Semester",
         "date": [2022, 12, 16],
         "details": {
@@ -137,4 +138,6 @@
         "location": null,
         "time": null,
         "images": ["https://smallbiztrends.com/ezoimgfmt/media.smallbiztrends.com/2022/01/memorial-day-message-850x476.png?ezimgfmt=rs:357x200/rscb12/ngcb12/notWebP"]
-        }  
+        }
+    }
+]}
