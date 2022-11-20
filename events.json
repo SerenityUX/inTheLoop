@@ -8,7 +8,17 @@
             "time": "time",
             "images": ["links"] 
         }
-    },
+    }, 
+    {
+    "name":"Staff Development Day",
+    "date": [2023, 1, 13],
+    "details": {
+        "description": "Take the day off",
+        "location": null,
+        "time": null,
+        "images": ["https://www.loudoun.gov/ImageRepository/Document?documentID=170886"]
+        }
+    },    
     {
         "name":"Dieter & Thomas Colab",
         "date": [2022, 11, 20],
@@ -18,5 +28,119 @@
             "time": "24/7",
             "images": ["links"] 
         }
-    }
-]}
+    },
+    {
+        "name":"Last Day Of 1st Semester",
+        "date": [2022, 12, 16],
+        "details": {
+            "description": "Enjoy the Break",
+            "location": null,
+            "time": null,
+            "images": ["https://patch.com/img/cdn20/users/119576/20200611/075428/styles/patch_image/public/image-1___11195256911.png"] 
+        }
+    },  
+    {
+    "name":"Students return to school",
+    "date": [2023, 1, 3],
+    "details": {
+        "description": "Welcome Back",
+        "location": null,
+        "time": null,
+        "images": ["https://www.wishesmsg.com/wp-content/uploads/welcome-back-to-school-message.jpg"] 
+        }
+    },  
+    {
+    "name":"Report Cards",
+    "date": [2023, 1, 5],
+    "details": {
+        "description": "Report Cards are in!",
+        "location": null,
+        "time": null,
+        "images": ["https://cdn5-ss19.sharpschool.com/UserFiles/Servers/Server_190408/Image/Recent%20News%202020/report-card-featured-image.jpg"] 
+        }
+    },  
+    {
+    "name":"Students return to school",
+    "date": [2023, 1, 3],
+    "details": {
+        "description": "Welcome Back",
+        "location": null,
+        "time": null,
+        "images": [null]
+        }
+    },  
+    {
+    "name":"Interim Reports",
+    "date": [2023, 2, 14],
+    "details": {
+        "description": "Find out your grades through interims",
+        "location": null,
+        "time": null,
+        "images": [null]
+        }
+    },  
+    {
+    "name":"Staff Development Day",
+    "date": [2023, 2, 13],
+    "details": {
+        "description": "Take the day off",
+        "location": null,
+        "time": null,
+        "images": ["https://www.loudoun.gov/ImageRepository/Document?documentID=170886"]
+        }
+    },  
+    {
+    "name":"Staff Development Day",
+    "date": [2023, 3, 17],
+    "details": {
+        "description": "Take the day off",
+        "location": null,
+        "time": null,
+        "images": ["https://www.loudoun.gov/ImageRepository/Document?documentID=170886"]
+        }
+    },  
+    {
+    "name":"Report Cards",
+    "date": [2023, 3, 20],
+    "details": {
+        "description": "Best of luck",
+        "location": null,
+        "time": null,
+        "images": ["https://cdn5-ss19.sharpschool.com/UserFiles/Servers/Server_190408/Image/Recent%20News%202020/report-card-featured-image.jpg"]
+        }
+    },  
+    {
+    "name":"Spring Holiday",
+    "date": [2023, 4, 26],
+    "details": {
+        "description": "Take the day off",
+        "location": null,
+        "time": null,
+        "images": [null]
+        }
+    },  
+    {
+    "name":"Annual Horse Riding Competition",
+    "date": [2023, 5, 23],
+    "details": {
+        "description": "South Carolinas Annual horse riding competition, bet on your favorite horse. who will win?",
+        "location": "Tryon International Equestrian Center",
+        "time": "2:00 PM",
+        "images": ["https://lh3.googleusercontent.com/p/AF1QipMAzKpAplQx7n7AK-XV7laEiOMluE2-ZEK0QAMz=s1360-w1360-h1020", "https://lh3.googleusercontent.com/p/AF1QipPJFBZcN6wsrauvw-v6rp8ojlBTKtn6rcgPi_QW=s1360-w1360-h1020", "https://lh3.googleusercontent.com/p/AF1QipM1s7nmLQSbxYLzMQLpZwqAswmtnh_LLe6oFbPh=s1360-w1360-h1020"]
+        }
+    },  
+    {
+    "name":"Memorial Day",
+    "date": [2023, 5, 29],
+    "details": {
+        "description": "No School, Memorial Day is a federal holiday in the United States for mourning the U.S. military personnel who have fought and died while serving in the United States armed forces.",
+        "location": null,
+        "time": null,
+        "images": ["https://smallbiztrends.com/ezoimgfmt/media.smallbiztrends.com/2022/01/memorial-day-message-850x476.png?ezimgfmt=rs:357x200/rscb12/ngcb12/notWebP"]
+        }
+        
+        
+        
+        
+
+]   
