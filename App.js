@@ -14,7 +14,6 @@ function App() {
       <Stack.Navigator>
         <Stack.Screen name="FirstScreen" component={FirstScreen} />
         <Stack.Screen name="Calendar" component={Calendar} />
-
       </Stack.Navigator>
     </NavigationContainer>
   );
