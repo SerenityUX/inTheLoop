@@ -11,6 +11,7 @@ import {
 import { useState } from "react";
 import CalendarComponent from "../components/calendarComponent"
 import DayDisplayComponent from "../components/dayDisplayComponent"
+import ModalScreen from "../screens/modalScreen"
 
 export default function Calendar({ route, navigation }) {
   const [date, setDate] = useState(["...", 0, 0, 0]);
@@ -26,18 +27,17 @@ export default function Calendar({ route, navigation }) {
           presentationStyle="pageSheet"
           visible={modalVisible}
           onRequestClose={() => {
-            Alert.alert('Modal has been closed.');
+            // Alert.alert('Modal has been closed.');
             setModalVisible(!modalVisible);
           }}>
-            <Text>Modal</Text>
+            <SafeAreaView>
+            <ModalScreen onRequestClose={() => setModalVisible(!modalVisible)} />
+            </SafeAreaView>
           </Modal>
-          <TouchableOpacity onPress={() => {
-              setModalVisible(true);
-          }}>
-            <Text>Welcome Back {route.params.name}</Text>
-          </TouchableOpacity>
 
-          <Text>As a {route.params.role}, your id is {route.params.id}</Text>
+            <Text style={{fontSize: "22px", fontWeight: "600", marginLeft: 16, marginRight: 16, marginTop: 16, marginBottom: 4}}>Welcome Back, {route.params.name}</Text>
+
+          {/* <Text>As a {route.params.role}, your id is {route.params.id}</Text> */}
           <CalendarComponent setDate={setDate}/>
           <DayDisplayComponent date={date}/>
           <StatusBar style="auto" />        

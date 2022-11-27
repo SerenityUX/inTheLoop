@@ -1,9 +1,13 @@
 import { StyleSheet, Button, TouchableOpacity, Text, View } from "react-native";
 import { getMonths } from "../calendarFunctions";
 import { useState, useEffect } from "react";
+import { useWindowDimensions } from 'react-native';
+
 
 export default function CalendarComponent({ setDate }) {
   const dayofweek = require("dayofweek");
+  const { height, width } = useWindowDimensions();
+
 
   const dayAbbreviations = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
   const dayOrder = [
@@ -56,7 +60,7 @@ export default function CalendarComponent({ setDate }) {
   return (
     <View>
       <View>
-        <View>
+        <View  style={{marginLeft: 16, marginRight: 16}}>
           <View
             style={{
               justifyContent: "space-between",
@@ -81,7 +85,7 @@ export default function CalendarComponent({ setDate }) {
               }}
               title={"<"}
             />
-            <Text>
+            <Text style={{fontSize: "16px"}}>
               {viewMonth.name} {viewYear}
             </Text>
             <Button
@@ -101,7 +105,7 @@ export default function CalendarComponent({ setDate }) {
           </View>
           <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
             {dayAbbreviations.map((dayofWeek, i) => (
-              <Text style={{ width: "14.2%" }} key={i}>
+              <Text style={{ width: (0.142 * (width - 32)) , fontSize: "14px", height: 0.065 * width, textAlign: "center"}} key={i}>
                 {dayofWeek}
               </Text>
             ))}
@@ -110,15 +114,15 @@ export default function CalendarComponent({ setDate }) {
                 dayOrder.indexOf(findStartDay(viewYear, viewMonth.number))
               ),
             ].map((x, i) => (
-              <Text style={{ width: "14.2%" }} key={i}></Text>
+              <Text style={{ width: (0.142 * (width - 32)) , height: 0.1 * width }} key={i}></Text>
             ))}
             {[...Array(viewMonth.numDays)].map((x, i) => (
-              <Text style={{ width: "14.2%" }} key={i}>
+              <View style={{ width: (0.142 * (width - 32)) , height: 0.1 * width, alignItems: "center", justifyContent: "center" }} key={i}>
                 {selectedDay == i + 1 &&
                 selectedMonth.number == viewMonth.number &&
                 selectedYear == viewYear ? (
-                  <TouchableOpacity style={{ backgroundColor: "white" }}>
-                    <Text style={{ color: "red" }}>{i + 1}</Text>
+                  <TouchableOpacity style={{ backgroundColor: "#155fb3", width: 0.1 * width, height: 0.1 * width, borderRadius: "100%", alignItems: "center", justifyContent: "center" }}>
+                    <Text style={{ color: "white", fontSize: "16px" }}>{i + 1}</Text>
                   </TouchableOpacity>
                 ) : (
                   <TouchableOpacity
@@ -133,12 +137,12 @@ export default function CalendarComponent({ setDate }) {
                         viewYear,
                       ]);
                     }}
-                    style={{ backgroundColor: "white" }}
+                    style={{ backgroundColor: "white", width: 0.1 * width, height: 0.1 * width, alignItems: "center", justifyContent: "center" }}
                   >
-                    <Text>{i + 1}</Text>
+                    <Text style={{fontSize: "16px"}}>{i + 1}</Text>
                   </TouchableOpacity>
                 )}
-              </Text>
+              </View>
             ))}
           </View>
         </View>
