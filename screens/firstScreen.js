@@ -9,6 +9,7 @@ export default function FirstScreen( {navigation} ) {
     TextInputView: {
       borderBottomWidth: 1,
       width: 50,
+      margin: 8,
       justifyContent: "center",
       alignItems: "center",
     },
@@ -16,6 +17,7 @@ export default function FirstScreen( {navigation} ) {
       fontSize: 30,
     }
   })
+
   const pin1Ref = useRef(null);
   const pin2Ref = useRef(null);
   const pin3Ref = useRef(null);
@@ -28,8 +30,11 @@ export default function FirstScreen( {navigation} ) {
   const [pin4, setPin4] = useState("");
   const [pin5, setPin5] = useState("");
   const [auth, setAuth] = useState("");
+  
 
   const pin = [pin1, pin2, pin3, pin4, pin5].join("");
+
+  
 
   function login() {
     fetch(`https://x8ki-letl-twmt.n7.xano.io/api:7v6zckRK/users/${pin}`).then((result) =>
@@ -56,23 +61,23 @@ export default function FirstScreen( {navigation} ) {
     <View
       style={{ 
         flex: 1, 
-        justifyContent: "center",
         alignItems: "center",
-        flexDirection: "row",
-        justifyContent: "space-around",
+        flexDirection: "column",
       }}  
     >
-            <Button disabled={pin1 == "" || pin2 == "" || pin3 == "" || pin4 == "" || pin5 == ""} title={auth.name || "login"} onPress={() =>  
-        {
-          login()
-/*         navigation.dispatch(
-        StackActions.replace("Calendar", {
-        name: "Thomas",
-        id: "23487",
-        role: "student"
-      })) */
-    }
-      }/>
+<View
+      style={{ 
+      }}  
+    >
+<Text>An ID is your personalized 5 digit code given by your school. if you do not know your ID number then please contact the school</Text>
+</View>
+
+<View 
+      style={{ 
+        alignItems: "center",
+        flexDirection: "row",
+      }}
+>
       <View style={styles.TextInputView}>
         <TextInput 
         ref={pin1Ref}
@@ -187,6 +192,19 @@ export default function FirstScreen( {navigation} ) {
         style={styles.TextInputText}
         />
       </View>
+
+      </View>
+      <Button disabled={pin1 == "" || pin2 == "" || pin3 == "" || pin4 == "" || pin5 == ""} title={auth.name || "login"} onPress={() =>  
+        {
+          login()
+/*         navigation.dispatch(
+        StackActions.replace("Calendar", {
+        name: "Thomas",
+        id: "23487",
+        role: "student"
+      })) */
+    }
+      }/>
 
       </View>
   )}
