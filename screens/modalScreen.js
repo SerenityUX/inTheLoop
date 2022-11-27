@@ -1,12 +1,48 @@
-
 import { useState } from "react";
-import { StyleSheet, TextInput, View, Text, SafeAreaView, Button, TouchableOpacity, Touchable } from "react-native";
+import { StyleSheet, TextInput, Image, View, Text, SafeAreaView, Button, TouchableOpacity, Dimensions, Touchable } from "react-native";
 import { StackActions } from '@react-navigation/native';
+import Carousel from "react-native-reanimated-carousel";
 
 
-export default function ModalScreen({ navigation, onRequestClose }) {
+export default function ModalScreen({ navigation, onRequestClose, event }) {
+  const windowWidth = Dimensions.get("window").width;
+
   return (
-        <Text onPress={onRequestClose}>In the Modal View</Text>
+    <View>
+        <Text onPress={onRequestClose}>Close Detail View</Text>
+      <Carousel
+            loop
+            width={windowWidth}
+            height={windowWidth}
+            autoPlay={false}
+            data={event?.details?.images}
+            scrollAnimationDuration={500}
+            onSnapToItem={(index) => console.log("current index:", index)}
+            renderItem={({ index }) => (
+              <View
+                style={{
+                  flex: 1,
+                  justifyContent: "center",
+                }}
+              >
+                <Image
+                  source={{
+                    uri: event?.details.images[index],
+                  }}
+                  style={{
+                    width: windowWidth,
+                    height: windowWidth,
+                  }}
+                />
+              </View>
+            )}
+          />
+        <Text>{event?.name}</Text>
+        <Text>{event?.date[2]}/{event?.date[1]}/{event?.date[0]}, {event?.details?.time}</Text>
+        <Text>{event?.details.location}</Text>
+        <Text>{event?.details.description}</Text>
+
+    </View>
      );
     }
 

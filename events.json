@@ -6,6 +6,16 @@
             "description": "event",
             "location": "location",
             "time": "time",
+            "images": ["https://moderndogmagazine.com/sites/default/files/images/uploads/Dat.jpg", "https://moderndogmagazine.com/sites/default/files/images/uploads/Dat.jpg"] 
+        }
+    }, 
+    {
+        "name":"Dorman Hackathon",
+        "date": [2023, 4, 29],
+        "details": {
+            "description": "event",
+            "location": "location",
+            "time": "time",
             "images": ["https://moderndogmagazine.com/sites/default/files/images/uploads/Dat.jpg"] 
         }
     }, 
@@ -127,7 +137,7 @@
         "description": "South Carolinas Annual horse riding competition, bet on your favorite horse. who will win?",
         "location": "Tryon International Equestrian Center",
         "time": "2:00 PM",
-        "images": ["httplor pickers://lh3.googleusercontent.com/p/AF1QipMAzKpAplQx7n7AK-XV7laEiOMluE2-ZEK0QAMz=s1360-w1360-h1020", "https://lh3.googleusercontent.com/p/AF1QipPJFBZcN6wsrauvw-v6rp8ojlBTKtn6rcgPi_QW=s1360-w1360-h1020", "https://lh3.googleusercontent.com/p/AF1QipM1s7nmLQSbxYLzMQLpZwqAswmtnh_LLe6oFbPh=s1360-w1360-h1020"]
+        "images": ["https://lh3.googleusercontent.com/p/AF1QipMAzKpAplQx7n7AK-XV7laEiOMluE2-ZEK0QAMz=s1360-w1360-h1020", "https://lh3.googleusercontent.com/p/AF1QipPJFBZcN6wsrauvw-v6rp8ojlBTKtn6rcgPi_QW=s1360-w1360-h1020", "https://lh3.googleusercontent.com/p/AF1QipM1s7nmLQSbxYLzMQLpZwqAswmtnh_LLe6oFbPh=s1360-w1360-h1020"]
         }
     },  
     {

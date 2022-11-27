@@ -1,7 +1,8 @@
-import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, TouchableHighlight, View, Image } from "react-native";
 import { events } from "../events.json";
 import Carousel from "react-native-reanimated-carousel";
 import { Dimensions } from "react-native";
+import EventPreview from "./eventPreview"
 
 const styles = StyleSheet.create({
   image: {
@@ -10,7 +11,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function dayDisplay({ date }) {
+export default function dayDisplay({ date, setModalVisible, setModalData }) {
   const windowWidth = Dimensions.get("window").width;
 
   return (
@@ -28,36 +29,18 @@ export default function dayDisplay({ date }) {
           ] +
             "" ==
           [date[2][0] + "", date[1] + "", date[3] + ""] ? (
-            <View>
-              <Text>{selectedEvent.name}</Text>
-              <Text>{selectedEvent.details.description}</Text>
-              
-              <Carousel
-                loop
-                width={windowWidth}
-                height={windowWidth}
-                autoPlay={false}
-                data={selectedEvent.details.images}
-                scrollAnimationDuration={500}
-                onSnapToItem={(index) => console.log("current index:", index)}
-                renderItem={({ index }) => (
-                  <View
-                    style={{
-                      flex: 1,
-                      justifyContent: "center",
-                    }}
-                  >
-                    <Image
-                      source={{ uri: selectedEvent.details.images[index] }}
-                      style={{ width: windowWidth, height: windowWidth }}
-                    />
-                  </View>
-                )}
-              />
-            </View>
+            <TouchableOpacity onPress={() => {
+              setModalData(selectedEvent)
+              setModalVisible(true)
+
+            }}>
+            <EventPreview selectedEvent={selectedEvent} windowWidth={windowWidth}/>
+            </TouchableOpacity>
           ) : null}
         </View>
+
       ))}
     </View>
+  
   );
 }

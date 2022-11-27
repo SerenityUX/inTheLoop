@@ -15,7 +15,9 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="FirstScreen" component={FirstScreen} />
-        <Stack.Screen name="Calendar" component={Calendar} />
+        <Stack.Screen name="Calendar" component={Calendar} 
+        options={{header: () => null}}        
+        />
         <Stack.Screen name="modalScreen" component={ModalScreen} />
 
       </Stack.Navigator>

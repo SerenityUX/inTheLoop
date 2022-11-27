@@ -15,9 +15,9 @@ import ModalScreen from "../screens/modalScreen"
 
 export default function Calendar({ route, navigation }) {
   const [date, setDate] = useState(["...", 0, 0, 0]);
-  const [modalVisible, setModalVisible] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalData, setModalData] = useState({});
 
-  
   return (
     <ScrollView style={{backgroundColor: "#fff"}}>
     <SafeAreaView style={styles.container}>
@@ -31,7 +31,7 @@ export default function Calendar({ route, navigation }) {
             setModalVisible(!modalVisible);
           }}>
             <SafeAreaView>
-            <ModalScreen onRequestClose={() => setModalVisible(!modalVisible)} />
+            <ModalScreen event={modalData} onRequestClose={() => setModalVisible(!modalVisible)} />
             </SafeAreaView>
           </Modal>
 
@@ -39,7 +39,7 @@ export default function Calendar({ route, navigation }) {
 
           {/* <Text>As a {route.params.role}, your id is {route.params.id}</Text> */}
           <CalendarComponent setDate={setDate}/>
-          <DayDisplayComponent date={date}/>
+          <DayDisplayComponent setModalVisible={setModalVisible} setModalData={setModalData} date={date}/>
           <StatusBar style="auto" />        
     </SafeAreaView>
     </ScrollView>
