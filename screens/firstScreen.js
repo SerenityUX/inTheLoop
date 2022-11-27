@@ -2,8 +2,9 @@
 import { useState, useRef } from "react";
 import { StyleSheet, TextInput, View, Text, SafeAreaView, Button, TouchableOpacity, Touchable } from "react-native";
 import { StackActions } from '@react-navigation/native';
+import loginFunction from "../api"
 
-export default function FirstScreen() {
+export default function FirstScreen( {navigation} ) {
   const styles = StyleSheet.create({
     TextInputView: {
       borderBottomWidth: 1,
@@ -15,7 +16,6 @@ export default function FirstScreen() {
       fontSize: 30,
     }
   })
-
   const pin1Ref = useRef(null);
   const pin2Ref = useRef(null);
   const pin3Ref = useRef(null);
@@ -27,6 +27,31 @@ export default function FirstScreen() {
   const [pin3, setPin3] = useState("");
   const [pin4, setPin4] = useState("");
   const [pin5, setPin5] = useState("");
+  const [auth, setAuth] = useState("");
+
+  const pin = [pin1, pin2, pin3, pin4, pin5].join("");
+
+  function login() {
+    fetch(`https://x8ki-letl-twmt.n7.xano.io/api:7v6zckRK/users/${pin}`).then((result) =>
+    {
+      result.json().then((jsoned) => { 
+        setAuth(jsoned)
+        if(jsoned.name != null) {
+          navigation.dispatch(
+            StackActions.replace("Calendar", {
+            name: jsoned.name,
+            id: jsoned.id,
+            role: jsoned.id,
+            children: jsoned?.children,
+            absences: jsoned?.absences,
+          }))
+        }
+      }).catch((error) => {
+        console.log(error)
+      })
+    })
+
+  }
   return (
     <View
       style={{ 
@@ -37,6 +62,17 @@ export default function FirstScreen() {
         justifyContent: "space-around",
       }}  
     >
+            <Button disabled={pin1 == "" || pin2 == "" || pin3 == "" || pin4 == "" || pin5 == ""} title={auth.name || "login"} onPress={() =>  
+        {
+          login()
+/*         navigation.dispatch(
+        StackActions.replace("Calendar", {
+        name: "Thomas",
+        id: "23487",
+        role: "student"
+      })) */
+    }
+      }/>
       <View style={styles.TextInputView}>
         <TextInput 
         ref={pin1Ref}
@@ -45,7 +81,7 @@ export default function FirstScreen() {
         value={pin1}
         onKeyPress={({ nativeEvent }) =>
           {
-            if (nativeEvent.key === 'Backspace' && pin1 == "") {
+            if (nativeEvent.key === 'Backspace') {
           } else if (nativeEvent.key !== "Backspace") {
             pin2Ref.current.focus();
           }
@@ -67,7 +103,7 @@ export default function FirstScreen() {
         value={pin2}
         onKeyPress={({ nativeEvent }) =>
           {
-            if (nativeEvent.key === 'Backspace' && pin2 == "") {
+            if (nativeEvent.key === 'Backspace') {
               pin1Ref.current.focus();
             } else if (nativeEvent.key !== "Backspace") {
               pin3Ref.current.focus();
@@ -90,7 +126,7 @@ export default function FirstScreen() {
         value={pin3}
         onKeyPress={({ nativeEvent }) =>
           {
-            if (nativeEvent.key === 'Backspace' && pin3 == "") {
+            if (nativeEvent.key === 'Backspace') {
               pin2Ref.current.focus();
             } else if (nativeEvent.key !== "Backspace") {
               pin4Ref.current.focus();
@@ -113,7 +149,7 @@ export default function FirstScreen() {
         value={pin4}
         onKeyPress={({ nativeEvent }) =>
           {
-            if (nativeEvent.key === 'Backspace' && pin4 == "") {
+            if (nativeEvent.key === 'Backspace') {
               pin3Ref.current.focus();
             } else if (nativeEvent.key !== "Backspace") {
               pin5Ref.current.focus();
@@ -136,7 +172,7 @@ export default function FirstScreen() {
         value={pin5}
         onKeyPress={({ nativeEvent }) =>
           {
-            if (nativeEvent.key === 'Backspace' && pin5 == "") {
+            if (nativeEvent.key === 'Backspace') {
               pin4Ref.current.focus();
             } else if (nativeEvent.key !== "Backspace") {
               pin5Ref.current.focus();

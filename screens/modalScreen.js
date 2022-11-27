@@ -15,7 +15,7 @@ export default function ModalScreen({ navigation, onRequestClose, event }) {
             width={windowWidth}
             height={windowWidth}
             autoPlay={false}
-            data={event?.details?.images}
+            data={event?.images}
             scrollAnimationDuration={500}
             onSnapToItem={(index) => console.log("current index:", index)}
             renderItem={({ index }) => (
@@ -27,7 +27,7 @@ export default function ModalScreen({ navigation, onRequestClose, event }) {
               >
                 <Image
                   source={{
-                    uri: event?.details.images[index],
+                    uri: event?.images[index],
                   }}
                   style={{
                     width: windowWidth,
@@ -38,9 +38,9 @@ export default function ModalScreen({ navigation, onRequestClose, event }) {
             )}
           />
         <Text>{event?.name}</Text>
-        <Text>{event?.date[2]}/{event?.date[1]}/{event?.date[0]}, {event?.details?.time}</Text>
-        <Text>{event?.details.location}</Text>
-        <Text>{event?.details.description}</Text>
+        <Text>{event?.date[2]}/{event?.date[1]}/{event?.date[0]}, {event?.time}</Text>
+        <Text>{event?.location}</Text>
+        <Text>{event?.description}</Text>
 
     </View>
      );

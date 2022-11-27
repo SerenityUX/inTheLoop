@@ -6,7 +6,7 @@ class EventPreview extends React.Component {
   render() {
     return (
             <View>
-                <Image source={this.props?.selectedEvent?.details.images} style={{width: 200, height: 200}}></Image>
+                <Image source={this.props?.selectedEvent?.images} style={{width: 200, height: 200}}></Image>
                 <Text>{this.props?.selectedEvent?.name}</Text>
 
           </View>
