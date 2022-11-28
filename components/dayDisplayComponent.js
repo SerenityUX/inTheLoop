@@ -47,6 +47,16 @@ export default function dayDisplay({ date, setModalVisible, setModalData }) {
       });
     });
   }, []);
+  function reloadResults() {
+    results = fetch(
+      `https://x8ki-letl-twmt.n7.xano.io/api:7v6zckRK/events`
+    ).then((result) => {
+      result.json().then((data) => {
+        setEvents(data);
+      });
+    });
+    
+  }
 
   const windowWidth = Dimensions.get("window").width;
 
@@ -70,7 +80,9 @@ export default function dayDisplay({ date, setModalVisible, setModalData }) {
           [date[2][0] + "", date[1] + "", date[3] + ""] ? (
             <TouchableOpacity
               onPress={() => {
+                reloadResults();
                 setModalData(selectedEvent);
+                
                 setModalVisible(true);
               }}
             >
