@@ -13,9 +13,13 @@ import CalendarComponent from "../components/calendarComponent"
 import DayDisplayComponent from "../components/dayDisplayComponent"
 import ModalScreen from "../screens/modalScreen"
 
+import AbsenceScreen from "../screens/planAbsence"
+
 export default function Calendar({ route, navigation }) {
   const [date, setDate] = useState(["...", 0, 0, 0]);
   const [modalVisible, setModalVisible] = useState(false);
+  const [absencesVisible, setAbsentVisible] = useState(false);
+
   const [modalData, setModalData] = useState({});
 
   return (
@@ -35,11 +39,25 @@ export default function Calendar({ route, navigation }) {
             </SafeAreaView>
           </Modal>
 
+          <Modal
+          animationType="slide"
+          transparent={false}
+          presentationStyle="pageSheet"
+          visible={absencesVisible}
+          onRequestClose={() => {
+            // Alert.alert('Modal has been closed.');
+            setAbsentVisible(!absencesVisible);
+          }}>
+            <SafeAreaView>
+            <AbsenceScreen date={date} onRequestClose={() => setAbsentVisible(!absencesVisible)} />
+            </SafeAreaView>
+          </Modal>
+
             <Text style={{fontSize: "22px", fontWeight: "600", marginLeft: 16, marginRight: 16, marginTop: 16, marginBottom: 4}}>Welcome Back, {route.params.name}</Text>
 
           {/* <Text>As a {route.params.role}, your id is {route.params.id}</Text> */}
           <CalendarComponent setDate={setDate}/>
-          <DayDisplayComponent setModalVisible={setModalVisible} setModalData={setModalData} date={date}/>
+          <DayDisplayComponent setModalVisible={setModalVisible} setAbsentVisible={setAbsentVisible} setModalData={setModalData} date={date}/>
           <StatusBar style="auto" />        
     </SafeAreaView>
     </ScrollView>
