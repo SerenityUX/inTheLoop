@@ -64,10 +64,10 @@ export default function dayDisplay({ date, setModalVisible, setModalData, setAbs
   const windowWidth = Dimensions.get("window").width;
 
   return (
-    <View>
+    <View style={{backgroundColor: "#F4F4F4", height: "100%", borderTopLeftRadius: 16, borderTopRightRadius: 16}}>
       <View style={{flexDirection: "row", justifyContent: "space-between", marginLeft: 16, marginRight: 16, marginTop: 16}}>
-      <Text>
-        {dayofweek(date[3], date[2][0], date[1], 'long')}
+      <Text style={{fontSize: 22, fontWeight: "500", marginBottom: 16}}>
+        {dayofweek(date[3], date[2][0], date[1], 'long')}, {date[2][0]}/{date[1]}/{date[3]}
       </Text>
     {role == 4 ? (    
     <TouchableOpacity style={styles.button} onPress={() => setAbsentVisible(true)}>
@@ -81,7 +81,7 @@ export default function dayDisplay({ date, setModalVisible, setModalData, setAbs
     {!noEvents ? (
         <Text onPress={() => console.log(events)}>No events</Text>
       ) : null}
-
+      <View style={{flexDirection: "row"}}>
       {events?.map((selectedEvent, i) => (
         <View key={i}>
           {[
@@ -107,6 +107,7 @@ export default function dayDisplay({ date, setModalVisible, setModalData, setAbs
           ) : null}
         </View>
       ))}
+      </View>
     </View>
   );
 }

@@ -65,12 +65,6 @@ export default function FirstScreen( {navigation} ) {
             absences: jsoned?.absences,
           }))
         }
-<<<<<<< HEAD
-        if (jsoned.message == "Not Found") {
-
-        }
-        console.log(jsoned.message)
-=======
 
         if (jsoned.message == "Not Found.") {
           setPin1("")
@@ -91,7 +85,6 @@ export default function FirstScreen( {navigation} ) {
             ]
           );
         } 
->>>>>>> d3a5dac (current)
       }).catch((error) => {
         console.log(error)
       })
