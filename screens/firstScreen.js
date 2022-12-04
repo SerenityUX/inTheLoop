@@ -1,14 +1,23 @@
 
 import { useState, useEffect, useRef } from "react";
-import { StyleSheet, TextInput, View, Text, SafeAreaView, Button, TouchableOpacity, Touchable } from "react-native";
+import { StyleSheet, TextInput, View, Text, Alert, SafeAreaView, Button, TouchableOpacity, Touchable } from "react-native";
 import { StackActions } from '@react-navigation/native';
 import loginFunction from "../api"
 
 export default function FirstScreen( {navigation} ) {
+
+  const [switched, setSwitched] = useState(false);
   useEffect(() => {
     // Update the document title using the browser API
     pin1Ref.current.focus();
   }, []);
+  useEffect(() => {
+    // Update the document title using the browser API
+    if (pin.length == 5 && switched == false) {
+      login()
+      setSwitched(true)
+    }
+  });
   const styles = StyleSheet.create({
     TextInputView: {
       borderBottomWidth: 1,
@@ -55,6 +64,10 @@ export default function FirstScreen( {navigation} ) {
             absences: jsoned?.absences,
           }))
         }
+        if (jsoned.message == "Not Found") {
+
+        }
+        console.log(jsoned.message)
       }).catch((error) => {
         console.log(error)
       })
@@ -62,11 +75,12 @@ export default function FirstScreen( {navigation} ) {
 
   }
   return (
-    <View
+    <SafeAreaView
       style={{ 
         flex: 1, 
         alignItems: "center",
         flexDirection: "column",
+        backgroundColor: "#fff"
       }}  
     >
 <View
@@ -168,6 +182,7 @@ export default function FirstScreen( {navigation} ) {
         onChangeText={(newPin) => 
           {
             setPin4(newPin)
+
           }
         }
         style={styles.TextInputText}
@@ -184,15 +199,13 @@ export default function FirstScreen( {navigation} ) {
             if (nativeEvent.key === 'Backspace') {
               pin4Ref.current.focus();
             } else if (nativeEvent.key !== "Backspace") {
-              pin5Ref.current.focus();
-              login();
-          }
+              pin5Ref.current.focus()
+            }
         }
         }
         onChangeText={(newPin) => 
           {
-            setPin5(newPin).then(() => {login()})
-            login();
+            setPin5(newPin)
           }
         }
         style={styles.TextInputText}
@@ -212,5 +225,5 @@ export default function FirstScreen( {navigation} ) {
     }
       }/>
 
-      </View>
+      </SafeAreaView>
   )}
