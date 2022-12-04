@@ -4,6 +4,7 @@ import {
   TouchableOpacity,
   TouchableHighlight,
   View,
+  ScrollView,
   Pressable,
   Image,
 } from "react-native";
@@ -81,7 +82,7 @@ export default function dayDisplay({ date, setModalVisible, setModalData, setAbs
     {!noEvents ? (
         <Text onPress={() => console.log(events)}>No events</Text>
       ) : null}
-      <View style={{flexDirection: "row"}}>
+      <ScrollView style={{flexDirection: "row"}} horizontal={true}>
       {events?.map((selectedEvent, i) => (
         <View key={i}>
           {[
@@ -102,12 +103,13 @@ export default function dayDisplay({ date, setModalVisible, setModalData, setAbs
               <EventPreview
                 selectedEvent={selectedEvent}
                 windowWidth={windowWidth}
+                isFinal={i == events.length - 1}
               />
             </TouchableOpacity>
           ) : null}
         </View>
       ))}
-      </View>
+      </ScrollView>
     </View>
   );
 }

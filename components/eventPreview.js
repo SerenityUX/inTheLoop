@@ -7,7 +7,7 @@ class EventPreview extends React.Component {
 
   render() {
     return (
-  <View style={{marginLeft: 16, marginRight: 16, marginRight: 0}}>
+  <View style={{marginLeft: 16, marginRight: this.props.isFinal ? 16 : 0}}>
   <Image source={this.props?.selectedEvent?.images} style={{width: (this.windowWidth - 48)/1.75, height: (this.windowWidth - 48)/1.75, borderRadius: 12}}></Image>
   <Text style={{
   fontWeight:"400",
