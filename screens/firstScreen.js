@@ -1,14 +1,10 @@
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { StyleSheet, TextInput, View, Text, SafeAreaView, Button, TouchableOpacity, Touchable } from "react-native";
 import { StackActions } from '@react-navigation/native';
 import loginFunction from "../api"
 
 export default function FirstScreen( {navigation} ) {
-  useEffect(() => {
-    // Update the document title using the browser API
-    pin1Ref.current.focus();
-  });
   const styles = StyleSheet.create({
     TextInputView: {
       borderBottomWidth: 1,
@@ -19,6 +15,7 @@ export default function FirstScreen( {navigation} ) {
     },
     TextInputText:{
       fontSize: 30,
+
     }
   })
 
@@ -34,7 +31,7 @@ export default function FirstScreen( {navigation} ) {
   const [pin4, setPin4] = useState("");
   const [pin5, setPin5] = useState("");
   const [auth, setAuth] = useState("");
-
+  
 
   const pin = [pin1, pin2, pin3, pin4, pin5].join("");
 
@@ -67,17 +64,21 @@ export default function FirstScreen( {navigation} ) {
         flex: 1, 
         alignItems: "center",
         flexDirection: "column",
-      }}  
+      }}
     >
 <View
       style={{ 
       }}  
     >
-<Text>An ID is your personalized 5 digit code given by your school. if you do not know your ID number then please contact the school</Text>
+<Text style={{
+  fontWeight:"200",
+  fontSize: 20,
+  margin: 16
+}}>An ID is your personalized 5 digit code given by your school. if you do not know your ID number then please contact the school</Text>
 </View>
 
 <View 
-      style={{ 
+      style={{
         alignItems: "center",
         flexDirection: "row",
       }}
