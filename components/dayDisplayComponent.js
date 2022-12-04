@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function dayDisplay({ date, setModalVisible, setModalData, setAbsentVisible }) {
+export default function dayDisplay({ date, setModalVisible, setModalData, setAbsentVisible, role }) {
   const dayofweek = require("dayofweek");
 
   const [events, setEvents] = useState([
@@ -69,9 +69,14 @@ export default function dayDisplay({ date, setModalVisible, setModalData, setAbs
       <Text>
         {dayofweek(date[3], date[2][0], date[1], 'long')}
       </Text>
+    {role == 4 ? (    
     <TouchableOpacity style={styles.button} onPress={() => setAbsentVisible(true)}>
-      <Text style={{color: "blue"}}>Plan Absence {date[2][0]}/{date[1]}/{date[3]}</Text>
+      <Text style={{color: "blue"}}>Plan Absence  {date[2][0]}/{date[1]}/{date[3]}</Text>
     </TouchableOpacity>  
+    ) : 
+    (null)
+    }
+
     </View>    
     {!noEvents ? (
         <Text onPress={() => console.log(events)}>No events</Text>

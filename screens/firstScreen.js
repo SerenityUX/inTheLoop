@@ -1,10 +1,14 @@
 
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { StyleSheet, TextInput, View, Text, SafeAreaView, Button, TouchableOpacity, Touchable } from "react-native";
 import { StackActions } from '@react-navigation/native';
 import loginFunction from "../api"
 
 export default function FirstScreen( {navigation} ) {
+  useEffect(() => {
+    // Update the document title using the browser API
+    pin1Ref.current.focus();
+  });
   const styles = StyleSheet.create({
     TextInputView: {
       borderBottomWidth: 1,
@@ -30,7 +34,7 @@ export default function FirstScreen( {navigation} ) {
   const [pin4, setPin4] = useState("");
   const [pin5, setPin5] = useState("");
   const [auth, setAuth] = useState("");
-  
+
 
   const pin = [pin1, pin2, pin3, pin4, pin5].join("");
 

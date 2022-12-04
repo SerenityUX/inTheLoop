@@ -49,7 +49,7 @@ export default function Calendar({ route, navigation }) {
             setAbsentVisible(!absencesVisible);
           }}>
             <SafeAreaView>
-            <AbsenceScreen date={date} onRequestClose={() => setAbsentVisible(!absencesVisible)} />
+            <AbsenceScreen children={route.params.children} date={date} onRequestClose={() => setAbsentVisible(!absencesVisible)} />
             </SafeAreaView>
           </Modal>
 
@@ -57,7 +57,7 @@ export default function Calendar({ route, navigation }) {
 
           {/* <Text>As a {route.params.role}, your id is {route.params.id}</Text> */}
           <CalendarComponent setDate={setDate}/>
-          <DayDisplayComponent setModalVisible={setModalVisible} setAbsentVisible={setAbsentVisible} setModalData={setModalData} date={date}/>
+          <DayDisplayComponent role={route.params.role} setModalVisible={setModalVisible} setAbsentVisible={setAbsentVisible} setModalData={setModalData} date={date}/>
           <StatusBar style="auto" />        
     </SafeAreaView>
     </ScrollView>
