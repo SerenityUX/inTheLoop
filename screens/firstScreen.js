@@ -15,6 +15,7 @@ export default function FirstScreen( {navigation} ) {
     // Update the document title using the browser API
     if (pin.length == 5 && switched == false) {
       login()
+      setSwitched(true)
     }
   });
   const styles = StyleSheet.create({
@@ -64,23 +65,10 @@ export default function FirstScreen( {navigation} ) {
             absences: jsoned?.absences,
           }))
         }
-        if (jsoned.message == "Not Found.") {
-          console.log(jsoned.message)
+        if (jsoned.message == "Not Found") {
 
-          Alert.alert(
-            "ID Not Found",
-            "Please enter your Dorman ID",
-            [
-              {
-                text: "Try Again",
-                onPress: () => console.log("Cancel Pressed"),
-                style: "cancel"
-              },
-            ]
-          );
-        } else {
-          setSwitched(true)
         }
+        console.log(jsoned.message)
       }).catch((error) => {
         console.log(error)
       })
@@ -97,8 +85,6 @@ export default function FirstScreen( {navigation} ) {
       }}  
     >
 <View
-      style={{ 
-      }}  
     >
 <Text style={{
   fontWeight:"600",
