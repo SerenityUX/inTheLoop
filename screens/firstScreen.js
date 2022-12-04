@@ -1,17 +1,10 @@
 
-<<<<<<< HEAD
-import { useState, useRef } from "react";
-import { StyleSheet, TextInput, View, Text, SafeAreaView, Button, TouchableOpacity, Touchable } from "react-native";
-=======
 import { useState, useEffect, useRef } from "react";
 import { StyleSheet, TextInput, View, Text, Alert, SafeAreaView, Button, TouchableOpacity, Touchable } from "react-native";
->>>>>>> 4de19f10752d5f5da70eff3f6fc1e2a14949b7d6
 import { StackActions } from '@react-navigation/native';
 import loginFunction from "../api"
 
 export default function FirstScreen( {navigation} ) {
-<<<<<<< HEAD
-=======
 
   const [switched, setSwitched] = useState(false);
   useEffect(() => {
@@ -22,10 +15,8 @@ export default function FirstScreen( {navigation} ) {
     // Update the document title using the browser API
     if (pin.length == 5 && switched == false) {
       login()
-      setSwitched(true)
     }
   });
->>>>>>> 4de19f10752d5f5da70eff3f6fc1e2a14949b7d6
   const styles = StyleSheet.create({
     TextInputView: {
       borderBottomWidth: 1,
@@ -73,10 +64,23 @@ export default function FirstScreen( {navigation} ) {
             absences: jsoned?.absences,
           }))
         }
-        if (jsoned.message == "Not Found") {
+        if (jsoned.message == "Not Found.") {
+          console.log(jsoned.message)
 
+          Alert.alert(
+            "ID Not Found",
+            "Please enter your Dorman ID",
+            [
+              {
+                text: "Try Again",
+                onPress: () => console.log("Cancel Pressed"),
+                style: "cancel"
+              },
+            ]
+          );
+        } else {
+          setSwitched(true)
         }
-        console.log(jsoned.message)
       }).catch((error) => {
         console.log(error)
       })
@@ -89,12 +93,8 @@ export default function FirstScreen( {navigation} ) {
         flex: 1, 
         alignItems: "center",
         flexDirection: "column",
-<<<<<<< HEAD
-      }}
-=======
         backgroundColor: "#fff"
       }}  
->>>>>>> 4de19f10752d5f5da70eff3f6fc1e2a14949b7d6
     >
 <View
       style={{ 
