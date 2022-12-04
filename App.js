@@ -14,7 +14,9 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="FirstScreen" component={FirstScreen} />
+        <Stack.Screen name="FirstScreen" component={FirstScreen}
+        options={{header: () => null}}   
+        />
         <Stack.Screen name="Calendar" component={Calendar} 
         options={{header: () => null}}        
         />
