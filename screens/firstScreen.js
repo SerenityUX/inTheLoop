@@ -1,17 +1,10 @@
 
-<<<<<<< HEAD
-import { useState, useRef } from "react";
-import { StyleSheet, TextInput, View, Text, SafeAreaView, Button, TouchableOpacity, Touchable } from "react-native";
-=======
 import { useState, useEffect, useRef } from "react";
 import { StyleSheet, TextInput, View, Text, Alert, SafeAreaView, Button, TouchableOpacity, Touchable } from "react-native";
->>>>>>> 4de19f10752d5f5da70eff3f6fc1e2a14949b7d6
 import { StackActions } from '@react-navigation/native';
 import loginFunction from "../api"
 
 export default function FirstScreen( {navigation} ) {
-<<<<<<< HEAD
-=======
 
   const [switched, setSwitched] = useState(false);
   useEffect(() => {
@@ -25,12 +18,13 @@ export default function FirstScreen( {navigation} ) {
       setSwitched(true)
     }
   });
->>>>>>> 4de19f10752d5f5da70eff3f6fc1e2a14949b7d6
   const styles = StyleSheet.create({
     TextInputView: {
       borderBottomWidth: 1,
       width: 50,
       margin: 8,
+      marginBottom: 40,
+      marginTop:40,
       justifyContent: "center",
       alignItems: "center",
     },
@@ -55,8 +49,6 @@ export default function FirstScreen( {navigation} ) {
   
 
   const pin = [pin1, pin2, pin3, pin4, pin5].join("");
-
-  
 
   function login() {
     fetch(`https://x8ki-letl-twmt.n7.xano.io/api:7v6zckRK/users/${pin}`).then((result) =>
@@ -89,21 +81,24 @@ export default function FirstScreen( {navigation} ) {
         flex: 1, 
         alignItems: "center",
         flexDirection: "column",
-<<<<<<< HEAD
-      }}
-=======
         backgroundColor: "#fff"
       }}  
->>>>>>> 4de19f10752d5f5da70eff3f6fc1e2a14949b7d6
     >
 <View
       style={{ 
       }}  
     >
 <Text style={{
-  fontWeight:"200",
-  fontSize: 20,
+  fontWeight:"600",
+  fontSize: 48,
   margin: 16
+}}>In The Loop</Text>
+<Text style={{
+  fontWeight:"150",
+  fontSize: 20,
+  marginLeft: 6,
+  opacity: 0.50,
+  marginRight: 8
 }}>An ID is your personalized 5 digit code given by your school. if you do not know your ID number then please contact the school</Text>
 </View>
 
@@ -114,7 +109,7 @@ export default function FirstScreen( {navigation} ) {
       }}
 >
       <View style={styles.TextInputView}>
-        <TextInput 
+        <TextInput
         ref={pin1Ref}
         keyboardType={'number-pad'}
         maxLength={1}
@@ -230,7 +225,7 @@ export default function FirstScreen( {navigation} ) {
       </View>
 
       </View>
-      <Button disabled={pin1 == "" || pin2 == "" || pin3 == "" || pin4 == "" || pin5 == ""} title={auth.name || "login"} onPress={() =>  
+      <Button disabled={pin1 == "" || pin2 == "" || pin3 == "" || pin4 == "" || pin5 == ""} title={auth.name || "Login"} onPress={() =>  
         {
           login()
 /*         navigation.dispatch(
