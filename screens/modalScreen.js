@@ -90,7 +90,8 @@ export default function ModalScreen({ navigation, onRequestClose, event }) {
   return (
     <View>
       <Text onPress={onRequestClose}>Close Detail View</Text>
-      <Text onPress={takeAPhoto}>Take a photo</Text>
+      <Text
+      onPress={takeAPhoto}>Take a photo</Text>
       <Carousel
         loop
         width={windowWidth}
@@ -118,12 +119,52 @@ export default function ModalScreen({ navigation, onRequestClose, event }) {
           </View>
         )}
       />
-      <Text>{event?.name}</Text>
-      <Text>
+      <Text
+      style={{
+        fontWeight:"600",
+        fontSize: 38,
+        marginTop: 16,
+        marginLeft: 16,
+        marginBottom: 12,
+        marginRight: 16
+      }}>
+
+      {event?.name}</Text>
+      <Text 
+      style={{
+        fontWeight:"500",
+        fontSize: 18,
+        color: '#102a54',
+        opacity: .75,
+        marginBottom: 4,
+        marginLeft: 16,
+        marginRight: 16
+      }}>
         {event?.date[1]}/{event?.date[2]}/{event?.date[0]}, {event?.time}
       </Text>
-      <Text>{event?.location}</Text>
-      <Text>{event?.description}</Text>
+
+      
+      <Text 
+      style={{
+      fontWeight:"500",
+      opacity: .75,
+      color: '#102a54',
+      fontSize: 18,
+      marginBottom: 16,
+      marginLeft: 16,
+      marginRight: 16
+      }}>
+
+      {event?.location}</Text>
+
+      <Text 
+      style={{
+      fontWeight:"400",
+      fontSize: 18,
+      marginLeft: 16,
+      marginRight: 16
+      }}>
+      {event?.description}</Text>
     </View>
   );
 }
