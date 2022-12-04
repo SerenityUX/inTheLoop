@@ -65,10 +65,33 @@ export default function FirstScreen( {navigation} ) {
             absences: jsoned?.absences,
           }))
         }
+<<<<<<< HEAD
         if (jsoned.message == "Not Found") {
 
         }
         console.log(jsoned.message)
+=======
+
+        if (jsoned.message == "Not Found.") {
+          setPin1("")
+          setPin2("")
+          setPin3("")
+          setPin4("")
+          setPin5("")
+          pin1Ref.current.focus();
+          Alert.alert(
+            "ID Not Found",
+            "Please enter your Dorman ID",
+            [
+              {
+                text: "Try Again",
+                onPress: () => console.log("Cancel Pressed"),
+                style: "cancel"
+              },
+            ]
+          );
+        } 
+>>>>>>> d3a5dac (current)
       }).catch((error) => {
         console.log(error)
       })
@@ -89,14 +112,17 @@ export default function FirstScreen( {navigation} ) {
 <Text style={{
   fontWeight:"600",
   fontSize: 48,
-  margin: 16
+  marginBottom: 16,
+  marginTop: 16,
+  marginRight: 16,
+  marginLeft: 16
 }}>In The Loop</Text>
 <Text style={{
   fontWeight:"150",
   fontSize: 20,
-  marginLeft: 6,
+  marginLeft: 16,
   opacity: 0.50,
-  marginRight: 8
+  marginRight: 16
 }}>An ID is your personalized 5 digit code given by your school. if you do not know your ID number then please contact the school</Text>
 </View>
 
@@ -123,6 +149,7 @@ export default function FirstScreen( {navigation} ) {
         onChangeText={(newPin) => 
           {
             setPin1(newPin)
+            setSwitched(false)
           }
         }
         style={styles.TextInputText}
