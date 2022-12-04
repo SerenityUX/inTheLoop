@@ -8,7 +8,7 @@ export default function FirstScreen( {navigation} ) {
   useEffect(() => {
     // Update the document title using the browser API
     pin1Ref.current.focus();
-  });
+  }, []);
   const styles = StyleSheet.create({
     TextInputView: {
       borderBottomWidth: 1,
@@ -185,12 +185,14 @@ export default function FirstScreen( {navigation} ) {
               pin4Ref.current.focus();
             } else if (nativeEvent.key !== "Backspace") {
               pin5Ref.current.focus();
+              login();
           }
         }
         }
         onChangeText={(newPin) => 
           {
-            setPin5(newPin)
+            setPin5(newPin).then(() => {login()})
+            login();
           }
         }
         style={styles.TextInputText}
