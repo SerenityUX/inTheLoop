@@ -6,6 +6,7 @@ import {
   View,
   Text,
   SafeAreaView,
+  ScrollView,
   Button,
   TouchableOpacity,
   Dimensions,
@@ -17,6 +18,7 @@ import * as ImagePicker from "expo-image-picker";
 
 export default function ModalScreen({ navigation, onRequestClose, event }) {
   const windowWidth = Dimensions.get("window").width;
+
   const [images, setImages] = useState(event?.images);
 
   async function takeAPhoto() {
@@ -92,6 +94,7 @@ export default function ModalScreen({ navigation, onRequestClose, event }) {
       <Text onPress={onRequestClose}>Close Detail View</Text>
       <Text
       onPress={takeAPhoto}>Take a photo</Text>
+      <ScrollView>
       <Carousel
         loop
         width={windowWidth}
@@ -162,9 +165,11 @@ export default function ModalScreen({ navigation, onRequestClose, event }) {
       fontWeight:"400",
       fontSize: 18,
       marginLeft: 16,
-      marginRight: 16
+      marginRight: 16,
+      marginBottom: 32
       }}>
       {event?.description}</Text>
+      </ScrollView>
     </View>
   );
 }

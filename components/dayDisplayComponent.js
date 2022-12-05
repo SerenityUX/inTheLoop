@@ -63,9 +63,10 @@ export default function dayDisplay({ date, setModalVisible, setModalData, setAbs
   }
 
   const windowWidth = Dimensions.get("window").width;
+  const windowHeight = Dimensions.get("window").height;
 
   return (
-    <View style={{backgroundColor: "#F4F4F4", height: "100%", borderTopLeftRadius: 16, borderTopRightRadius: 16}}>
+    <View style={{backgroundColor: "#F4F4F4", borderTopLeftRadius: 16, borderTopRightRadius: 16}}>
       <View style={{flexDirection: "row", justifyContent: "space-between", marginLeft: 16, marginRight: 16, marginTop: 16}}>
       <Text style={{fontSize: 22, fontWeight: "500", marginBottom: 16}}>
         {dayofweek(date[3], date[2][0], date[1], 'long')}, {date[2][0]}/{date[1]}/{date[3]}
@@ -80,7 +81,9 @@ export default function dayDisplay({ date, setModalVisible, setModalData, setAbs
 
     </View>    
     {!noEvents ? (
+      <View style={{height: (windowHeight < 800 ? (((windowWidth - 48)/1.75) + 108) : ((windowWidth - 48)/1.25) + 108 + 16)}}>
         <Text onPress={() => console.log(events)}>No events</Text>
+      </View>
       ) : null}
       <ScrollView style={{flexDirection: "row"}} horizontal={true}>
       {events?.map((selectedEvent, i) => (

@@ -3,8 +3,8 @@ import { getMonths } from "../calendarFunctions";
 import { useState, useEffect } from "react";
 import { useWindowDimensions } from 'react-native';
 
-
 export default function CalendarComponent({ setDate }) {
+
   const dayofweek = require("dayofweek");
   const { height, width } = useWindowDimensions();
 
@@ -66,6 +66,7 @@ export default function CalendarComponent({ setDate }) {
               justifyContent: "space-between",
               alignItems: "center",
               flexDirection: "row",
+              marginBottom: 16
             }}
           >
             <Button
@@ -85,7 +86,7 @@ export default function CalendarComponent({ setDate }) {
               }}
               title={"<"}
             />
-            <Text style={{fontSize: "16px"}}>
+            <Text style={{fontSize: "18px"}}>
               {viewMonth.name} {viewYear}
             </Text>
             <Button
