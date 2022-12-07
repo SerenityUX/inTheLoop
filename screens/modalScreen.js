@@ -65,24 +65,28 @@ export default function ModalScreen({ navigation, onRequestClose, event }) {
                   setImages((current) => [
                     ...current,
                     jsonedResponse.image.display_url,
-                  ])
-                  uploadData.append("newImage", jsonedResponse.image.display_url)
-                  uploadData.append("events_id", parseInt(event.id))
-                }).then(() => {
+                  ]);
+                  uploadData.append(
+                    "newImage",
+                    jsonedResponse.image.display_url
+                  );
+                  uploadData.append("events_id", parseInt(event.id));
+                })
+                .then(() => {
                   console.log(uploadData);
 
                   fetch(
                     `https://x8ki-letl-twmt.n7.xano.io/api:7v6zckRK/events/${event.id}`,
-                      {
+                    {
                       method: "POST",
                       headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
+                        Accept: "application/json",
+                        "Content-Type": "application/json",
                       },
                       body: uploadData,
-                      }
-                  )})
-                    
+                    }
+                  );
+                })
             );
           }
         });
@@ -91,84 +95,120 @@ export default function ModalScreen({ navigation, onRequestClose, event }) {
   }
   return (
     <View>
-      <Text onPress={onRequestClose}>Close Detail View</Text>
-      <Text
-      onPress={takeAPhoto}>Take a photo</Text>
-      <ScrollView>
-      <Carousel
-        loop
-        width={windowWidth}
-        height={windowWidth}
-        autoPlay={false}
-        data={images}
-        scrollAnimationDuration={500}
-        onSnapToItem={(index) => console.log("current index:", index)}
-        renderItem={({ index }) => (
-          <View
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <TouchableOpacity onPress={onRequestClose}>
+          <Image
+            source={require("../icons/Close.png")}
             style={{
-              flex: 1,
-              justifyContent: "center",
+              height: 24,
+              marginLeft: 16,
+              marginTop: 12,
+              marginBottom: 12,
+              padding: 16,
+              width: 24,
             }}
-          >
-            <Image
-              source={{
-                uri: images[index],
-              }}
+          />
+        </TouchableOpacity>
+        <Text style={{ fontSize: 16 }}>{event?.name}</Text>
+        <TouchableOpacity onPress={takeAPhoto}>
+          <Image
+            source={require("../icons/addPhoto.png")}
+            style={{
+              height: 24,
+              marginRight: 16,
+              marginTop: 12,
+              marginBottom: 12,
+              padding: 16,
+              width: 24,
+            }}
+          />
+        </TouchableOpacity>
+      </View>
+      <ScrollView>
+        <Carousel
+          loop
+          width={windowWidth}
+          height={windowWidth}
+          autoPlay={false}
+          data={images}
+          scrollAnimationDuration={500}
+          onSnapToItem={(index) => console.log("current index:", index)}
+          renderItem={({ index }) => (
+            <View
               style={{
-                width: windowWidth,
-                height: windowWidth,
+                flex: 1,
+                justifyContent: "center",
               }}
-            />
-          </View>
-        )}
-      />
-      <Text
-      style={{
-        fontWeight:"600",
-        fontSize: 38,
-        marginTop: 16,
-        marginLeft: 16,
-        marginBottom: 12,
-        marginRight: 16
-      }}>
+            >
+              <Image
+                source={{
+                  uri: images[index],
+                }}
+                style={{
+                  width: windowWidth,
+                  height: windowWidth,
+                }}
+              />
+            </View>
+          )}
+        />
+        <Text
+          style={{
+            fontWeight: "600",
+            fontSize: 38,
+            marginTop: 16,
+            marginLeft: 16,
+            marginBottom: 12,
+            marginRight: 16,
+          }}
+        >
+          {event?.name}
+        </Text>
+        <Text
+          style={{
+            fontWeight: "500",
+            fontSize: 18,
+            color: "#102a54",
+            opacity: 0.75,
+            marginBottom: 4,
+            marginLeft: 16,
+            marginRight: 16,
+          }}
+        >
+          {event?.date[1]}/{event?.date[2]}/{event?.date[0]}, {event?.time}
+        </Text>
 
-      {event?.name}</Text>
-      <Text 
-      style={{
-        fontWeight:"500",
-        fontSize: 18,
-        color: '#102a54',
-        opacity: .75,
-        marginBottom: 4,
-        marginLeft: 16,
-        marginRight: 16
-      }}>
-        {event?.date[1]}/{event?.date[2]}/{event?.date[0]}, {event?.time}
-      </Text>
+        <Text
+          style={{
+            fontWeight: "500",
+            opacity: 0.75,
+            color: "#102a54",
+            fontSize: 18,
+            marginBottom: 16,
+            marginLeft: 16,
+            marginRight: 16,
+          }}
+        >
+          {event?.location}
+        </Text>
 
-      
-      <Text 
-      style={{
-      fontWeight:"500",
-      opacity: .75,
-      color: '#102a54',
-      fontSize: 18,
-      marginBottom: 16,
-      marginLeft: 16,
-      marginRight: 16
-      }}>
-
-      {event?.location}</Text>
-
-      <Text 
-      style={{
-      fontWeight:"400",
-      fontSize: 18,
-      marginLeft: 16,
-      marginRight: 16,
-      marginBottom: 32
-      }}>
-      {event?.description}</Text>
+        <Text
+          style={{
+            fontWeight: "400",
+            fontSize: 18,
+            marginLeft: 16,
+            marginRight: 16,
+            marginBottom: 32,
+          }}
+        >
+          {event?.description}
+        </Text>
       </ScrollView>
     </View>
   );

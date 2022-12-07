@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
 
 export default function dayDisplay({ date, setModalVisible, setModalData, setAbsentVisible, role }) {
   const dayofweek = require("dayofweek");
+  const [seeUpcomingEvents, setSeeUpcomingEvents] = useState(false)
 
   const [events, setEvents] = useState([
     {
@@ -67,13 +68,13 @@ export default function dayDisplay({ date, setModalVisible, setModalData, setAbs
 
   return (
     <View style={{backgroundColor: "#F4F4F4", borderTopLeftRadius: 16, borderTopRightRadius: 16}}>
-      <View style={{flexDirection: "row", justifyContent: "space-between", marginLeft: 16, marginRight: 16, marginTop: 16}}>
-      <Text style={{fontSize: 22, fontWeight: "500", marginBottom: 16}}>
+      <View style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: 16, marginLeft: 16, marginRight: 16, marginTop: 16}}>
+      <Text style={{fontSize: 22, fontWeight: "500"}}>
         {dayofweek(date[3], date[2][0], date[1], 'long')}, {date[2][0]}/{date[1]}/{date[3]}
       </Text>
     {role == 4 ? (    
     <TouchableOpacity style={styles.button} onPress={() => setAbsentVisible(true)}>
-      <Text style={{color: "blue"}}>Plan Absence  {date[2][0]}/{date[1]}/{date[3]}</Text>
+      <Text style={{color: "#1E70EA", fontSize: 16}}>Plan Absence</Text>
     </TouchableOpacity>  
     ) : 
     (null)
@@ -83,9 +84,13 @@ export default function dayDisplay({ date, setModalVisible, setModalData, setAbs
     {!noEvents ? (
       <View style={{height: (windowHeight < 800 ? (((windowWidth - 48)/1.75) + 108) : ((windowWidth - 48)/1.25) + 108 + 16)}}>
         <Text onPress={() => console.log(events)}>No events</Text>
+        <TouchableOpacity>
+          <Text onPress={() => setSeeUpcomingEvents(true)}>View Upcoming Events</Text>
+        </TouchableOpacity>
       </View>
       ) : null}
       <ScrollView style={{flexDirection: "row"}} horizontal={true}>
+      
       {events?.map((selectedEvent, i) => (
         <View key={i}>
           {[

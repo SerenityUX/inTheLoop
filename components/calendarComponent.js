@@ -1,7 +1,9 @@
-import { StyleSheet, Button, TouchableOpacity, Text, View } from "react-native";
+import { StyleSheet, Button, TouchableOpacity, Image, Text, View } from "react-native";
 import { getMonths } from "../calendarFunctions";
 import { useState, useEffect } from "react";
 import { useWindowDimensions } from 'react-native';
+import { Left } from '../icons/Left.png';
+import { Right } from '../icons/Right.png';
 
 export default function CalendarComponent({ setDate }) {
 
@@ -69,7 +71,7 @@ export default function CalendarComponent({ setDate }) {
               marginBottom: 16
             }}
           >
-            <Button
+            <TouchableOpacity
               onPress={() => {
                 if (
                   getMonths(currentDay.getYear() + 1900)[
@@ -84,12 +86,14 @@ export default function CalendarComponent({ setDate }) {
                   setViewMonth(getMonths(viewYear + 1900)[11]);
                 }
               }}
-              title={"<"}
-            />
+              
+            >
+              <Image source={require("../icons/Left.png")} style={{height: 32, width: 32}}/>
+            </TouchableOpacity>
             <Text style={{fontSize: "18px"}}>
               {viewMonth.name} {viewYear}
             </Text>
-            <Button
+            <TouchableOpacity
               onPress={() => {
                 if (
                   getMonths(currentDay.getYear() + 1900)[viewMonth.number] !=
@@ -101,8 +105,9 @@ export default function CalendarComponent({ setDate }) {
                   setViewMonth(getMonths(viewYear + 1900)[0]);
                 }
               }}
-              title={">"}
-            />
+            >              
+            <Image source={require("../icons/Right.png")} style={{height: 32, width: 32}}/>
+            </TouchableOpacity>
           </View>
           <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
             {dayAbbreviations.map((dayofWeek, i) => (
@@ -122,7 +127,7 @@ export default function CalendarComponent({ setDate }) {
                 {selectedDay == i + 1 &&
                 selectedMonth.number == viewMonth.number &&
                 selectedYear == viewYear ? (
-                  <TouchableOpacity style={{ backgroundColor: "#155fb3", width: 0.1 * width, height: 0.1 * width, borderRadius: "100%", alignItems: "center", justifyContent: "center" }}>
+                  <TouchableOpacity style={{ backgroundColor: "#3D83EC", width: 0.1 * width, height: 0.1 * width, borderRadius: "100%", alignItems: "center", justifyContent: "center" }}>
                     <Text style={{ color: "white", fontSize: "16px" }}>{i + 1}</Text>
                   </TouchableOpacity>
                 ) : (
