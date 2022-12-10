@@ -130,7 +130,7 @@ export default function ModalScreen({ navigation, onRequestClose, event }) {
           />
         </TouchableOpacity>
       </View>
-      <ScrollView>
+      <ScrollView style={{marginBottom: 96}}>
         <Carousel
           loop
           width={windowWidth}

@@ -17,6 +17,7 @@ class EventPreview extends React.Component {
   marginLeft: 12,
   marginRight: 12
 }}>{this.props?.selectedEvent?.name}</Text>
+    <Text style={{color: "#1E70EA", marginLeft: 12, marginRight: 12}}>{this.props?.selectedEvent?.date[2]}/{this.props?.selectedEvent?.date[1]}/{this.props?.selectedEvent?.date[0]}</Text>
 
           </View>
     );
