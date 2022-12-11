@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {
   StyleSheet,
   TextInput,
@@ -18,8 +18,10 @@ import * as ImagePicker from "expo-image-picker";
 
 export default function ModalScreen({ navigation, onRequestClose, event }) {
   const windowWidth = Dimensions.get("window").width;
-
   const [images, setImages] = useState(event?.images);
+  const [uploaded, setUploaded] = useState(false);
+
+  const ref = useRef(null);
 
   async function takeAPhoto() {
     const formData = new FormData();
@@ -65,7 +67,7 @@ export default function ModalScreen({ navigation, onRequestClose, event }) {
                   setImages((current) => [
                     ...current,
                     jsonedResponse.image.display_url,
-                  ]);
+                  ])
                   uploadData.append(
                     "newImage",
                     jsonedResponse.image.display_url
@@ -73,7 +75,8 @@ export default function ModalScreen({ navigation, onRequestClose, event }) {
                   uploadData.append("events_id", parseInt(event.id));
                 })
                 .then(() => {
-                  console.log(uploadData);
+                  var length = images.length
+                  console.log(length)
 
                   fetch(
                     `https://x8ki-letl-twmt.n7.xano.io/api:7v6zckRK/events/${event.id}`,
@@ -86,7 +89,8 @@ export default function ModalScreen({ navigation, onRequestClose, event }) {
                       body: uploadData,
                     }
                   );
-                })
+                }).then(() => setUploaded(true)
+                )
             );
           }
         });
@@ -135,6 +139,7 @@ export default function ModalScreen({ navigation, onRequestClose, event }) {
           loop
           width={windowWidth}
           height={windowWidth}
+          ref={ref}
           autoPlay={false}
           data={images}
           scrollAnimationDuration={500}
@@ -158,7 +163,19 @@ export default function ModalScreen({ navigation, onRequestClose, event }) {
             </View>
           )}
         />
+        {uploaded ? 
+        (
+          <Text 
+          onPress={() => {
+            ref.current?.next({count: images.length - ref.current?.getCurrentIndex() - 1, animated: false})
+            
+          }}
+  style={{textAlign: 'center', color: 'white', width: "100%", backgroundColor: "black", paddingTop: 16, paddingBottom: 16,}}>Image successsfully uploaded, Tap to view image</Text>
+        ) 
+        : (null)}
+
         <Text
+
           style={{
             fontWeight: "600",
             fontSize: 38,

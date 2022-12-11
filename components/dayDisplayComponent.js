@@ -94,7 +94,7 @@ export default function dayDisplay({
           {seeUpcomingEvents
             ? "Upcoming Events"
             : dayofweek(date[3], date[2][0], date[1], "long") +
-              "," +
+              ", " +
               date[2][0] +
               "/" +
               date[1] +
@@ -157,12 +157,15 @@ export default function dayDisplay({
                 : (windowWidth - 48) / 1.25 + 108 + 16,
           }}
         >
-          <Text onPress={() => console.log(events)}>No events</Text>
-          <TouchableOpacity>
-            <Text onPress={() => setSeeUpcomingEvents(true)}>
+          <View style={{justifyContent: 'center', height: "100%"}}>
+          <Text style={{fontSize: 18, fontWeight: "600", width: windowWidth, textAlign: "center"}}>No events will be hosted on this date</Text>
+
+          <TouchableOpacity style={{textAlign: "center", width: windowWidth}}>
+            <Text style={{textAlign: "center", color: "#2D78E8", fontSize: 16, textDecoration: "underline", width: windowWidth}} onPress={() => setSeeUpcomingEvents(true)}>
               View Upcoming Events
             </Text>
           </TouchableOpacity>
+          </View>
         </View>
       ) : null}
       <ScrollView style={{ flexDirection: "row" }} horizontal={true}>
